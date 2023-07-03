@@ -326,18 +326,23 @@ const imgUrls = [
   "https://i.imgur.com/ZgnFIjL.png"
 ]
 
-const checkMobile = () => {
-  if(window.innerWidth < 1200 || window.innerHeight < 700) {
-    document.querySelector('main').style.display = 'none';
-    document.querySelector('.mobile').style.display = 'flex';
-  }
-}
-window.addEventListener('resize', checkMobile())
-
 let mainDiv = document.querySelector("main");
 const floaters = document.querySelectorAll('.floater');
 const positions = [];
 const floatMoveFactors = [];
+
+const checkMobile = () => {
+  if(window.innerWidth < 900 || window.innerHeight < 600) {
+    document.querySelector('main').style.display = 'none';
+    document.querySelector('.mobile').style.display = 'flex';
+  }
+  if(window.innerWidth < 1200) {
+    floaters.forEach((floater, index) => {
+      floater.style.width = '256px';
+    })
+  }
+}
+window.addEventListener('resize', checkMobile())
 
 
 document.addEventListener("mousemove", (e) => {
